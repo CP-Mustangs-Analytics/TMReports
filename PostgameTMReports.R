@@ -35,7 +35,7 @@ table = Data%>%
   filter(PitcherTeam != "CAL_MUS", Date == date1)%>%
   group_by(Pitcher, TaggedPitchType)%>%
   summarise(AverageVelo = round(mean(RelSpeed, na.rm=T),0), 
-            LowRangeVelo = round(quantile(RelSpeed, .25, na.rm=T),0), 
-            TopRangeVelo = round(quantile(RelSpeed, .75, na.rm=T),0))
+            LowVelo = round(min(RelSpeed, na.rm=T),0), 
+            TopVelo = round(max(RelSpeed, na.rm=T),0))
 
 write.csv(table, "C:/Users/epmmo/Downloads/Teddy_Velos.csv")
